@@ -1,0 +1,28 @@
+/* Load Inter font for the UI */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+
+/* Base font */
+body {
+    font-family: "Inter", sans-serif;
+}
+
+/* Custom styles for preview text to handle variable sizes */
+.font-preview-text {
+    font-size: 2rem; /* 32px */
+    line-height: 1.4;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    /* No font-family set so it uses browser default for maximum Unicode support */
+}
+
+/* Responsive font size */
+@media (max-width: 640px) {
+    .font-preview-text {
+        font-size: 1.5rem; /* 24px */
+    }
+    
+    #appTitle {
+        font-size: 2.25rem; /* 36px */
+        line-height: 1.2;
+    }
+}
