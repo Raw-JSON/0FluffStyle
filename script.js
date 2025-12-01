@@ -24,7 +24,6 @@ const charMaps = {
         'A': '𝔸', 'B': '𝔹', 'C': 'ℂ', 'D': '𝔻', 'E': '𝔼', 'F': '𝔽', 'G': '𝔾', 'H': 'ℍ', 'I': '𝕀', 'J': '𝕁', 'K': '𝕂', 'L': '𝕃', 'M': '𝕄', 'N': 'ℕ', 'O': '𝕆', 'P': 'ℙ', 'Q': 'ℚ', 'R': 'ℝ', 'S': '𝕊', 'T': '𝕋', 'U': '𝕌', 'V': '𝕍', 'W': '𝕎', 'X': '𝕏', 'Y': '𝕐', 'Z': 'ℤ',
         'a': '𝕒', 'b': '𝕓', 'c': '𝕔', 'd': '𝕕', 'e': '𝕖', 'f': '𝕗', 'g': '𝕘', 'h': '𝕙', 'i': '𝕚', 'j': '𝕛', 'k': '𝕜', 'l': '𝕝', 'm': '𝕞', 'n': '𝕟', 'o': '𝕠', 'p': '𝕡', 'q': '𝕢', 'r': '𝕣', 's': '𝕤', 't': '𝕥', 'u': '𝕦', 'v': '𝕧', 'w': '𝕨', 'x': '𝕩', 'y': '𝕪', 'z': '𝕫'
     },
-    // --- NEW STYLES ADDED ---
     'sansItalic': {
         'A': '𝘈', 'B': '𝘉', 'C': '𝘊', 'D': '𝘋', 'E': '𝘌', 'F': '𝘍', 'G': '𝘎', 'H': '𝘏', 'I': '𝘐', 'J': '𝘑', 'K': '𝘒', 'L': '𝘓', 'M': '𝘔', 'N': '𝘕', 'O': '𝘖', 'P': '𝘗', 'Q': '𝘘', 'R': '𝘙', 'S': '𝘚', 'T': '𝘛', 'U': '𝘜', 'V': '𝘝', 'W': '𝘞', 'X': '𝘟', 'Y': '𝘠', 'Z': '𝘡',
         'a': '𝘢', 'b': '𝘣', 'c': '𝘤', 'd': '𝘥', 'e': '𝘦', 'f': '𝘧', 'g': '𝘨', 'h': '𝘩', 'i': '𝘪', 'j': '𝘫', 'k': '𝘬', 'l': '𝘭', 'm': '𝘮', 'n': '𝘯', 'o': '𝘰', 'p': '𝘱', 'q': '𝘲', 'r': '𝘳', 's': '𝘴', 't': '𝘵', 'u': '𝘶', 'v': '𝘷', 'w': '𝘸', 'x': '𝘹', 'y': '𝘺', 'z': '𝘻'
@@ -34,7 +33,6 @@ const charMaps = {
         'a': '𝙖', 'b': '𝙗', 'c': '𝙘', 'd': '𝙙', 'e': '𝙚', 'f': '𝙛', 'g': '𝙜', 'h': '𝙝', 'i': '𝙞', 'j': '𝙟', 'k': '𝙠', 'l': '𝙡', 'm': '𝙢', 'n': '𝙣', 'o': '𝙤', 'p': '𝙥', 'q': '𝙦', 'r': '𝙧', 's': '𝙨', 't': '𝙩', 'u': '𝙪', 'v': '𝙫', 'w': '𝙬', 'x': '𝙭', 'y': '𝙮', 'z': '𝙯',
         '0': '𝟬', '1': '𝟭', '2': '𝟮', '3': '𝟯', '4': '𝟰', '5': '𝟱', '6': '𝟲', '7': '𝟳', '8': '𝟴', '9': '𝟵'
     },
-    // --- END NEW STYLES ---
     'serifBold': {
         'A': '𝐀', 'B': '𝐁', 'C': '𝐂', 'D': '𝐃', 'E': '𝐄', 'F': '𝐅', 'G': '𝐆', 'H': '𝐇', 'I': '𝐈', 'J': '𝐉', 'K': '𝐊', 'L': '𝐋', 'M': '𝐌', 'N': '𝐍', 'O': '𝐎', 'P': '𝐏', 'Q': '𝐐', 'R': '𝐑', 'S': '𝐒', 'T': '𝐓', 'U': '𝐔', 'V': '𝐕', 'W': '𝐖', 'X': '𝐗', 'Y': '𝐘', 'Z': '𝐙',
         'a': '𝐚', 'b': '𝐛', 'c': '𝐜', 'd': '𝐝', 'e': '𝐞', 'f': '𝐟', 'g': '𝐠', 'h': '𝐡', 'i': '𝐢', 'j': '𝐣', 'k': '𝐤', 'l': '𝐥', 'm': '𝐦', 'n': '𝐧', 'o': '𝐨', 'p': '𝐩', 'q': '𝐪', 'r': '𝐫', 's': '𝐬', 't': '𝐭', 'u': '𝐮', 'v': '𝐯', 'w': '𝐰', 'x': '𝐱', 'y': '𝐲', 'z': '𝐳'
@@ -87,10 +85,8 @@ const fonts = [
     { name: 'Italic', converter: (text) => convertText(text, charMaps.serifItalic) },
     { name: 'Bold Italic', converter: (text) => convertText(text, charMaps.serifBoldItalic) },
     
-    // --- NEW STYLES ADDED TO ARRAY ---
     { name: 'Italic (Sans)', converter: (text) => convertText(text, charMaps.sansItalic) },
     { name: 'Bold Italic (Sans)', converter: (text) => convertText(text, charMaps.sansBoldItalic) },
-    // --- END NEW STYLES ---
 
     { name: 'Script', converter: (text) => convertText(text, charMaps.script) },
     { name: 'Fraktur', converter: (text) => convertText(text, charMaps.fraktur) },
@@ -129,7 +125,8 @@ function updateFontDisplay() {
         const convertedText = font.converter(text);
 
         const card = document.createElement('div');
-        card.className = 'relative bg-gray-800 p-6 rounded-lg shadow-md border border-gray-700 transition-transform duration-300 hover:scale-105';
+        // UPDATED CLASS: Neo-Brutalist Dark Theme
+        card.className = 'relative bg-gray-900 p-6 rounded-lg shadow-2xl border border-gray-800 transition-transform duration-300 hover:scale-105 hover:border-cyan-500/50';
         
         const textPreview = document.createElement('p');
         textPreview.className = 'font-preview-text';
@@ -140,10 +137,11 @@ function updateFontDisplay() {
         fontName.innerText = font.name;
         
         const copyButton = document.createElement('button');
-        copyButton.className = 'absolute top-4 right-4 bg-blue-600 text-white p-2 rounded-full w-10 h-10 flex items-center justify-center hover:bg-blue-700 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-blue-400';
+        // UPDATED CLASS: Bright Magenta (Fuchsia) Accent
+        copyButton.className = 'absolute top-4 right-4 bg-fuchsia-600 text-white p-2 rounded-full w-10 h-10 flex items-center justify-center hover:bg-fuchsia-700 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-cyan-400';
         copyButton.innerHTML = `
             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                <path stroke-linecap="round" stroke-linejoin="round" d="M8 16H6a2 2 0 01-2-2V6a2 0 012-2h8a2 0 012 2v2m-6 12h8a2 0 002-2v-8a2 0 00-2-2h-8a2 0 00-2 2v8a2 0 002 2z" />
             </svg>
         `;
         copyButton.onclick = () => copyToClipboard(convertedText);
@@ -184,4 +182,4 @@ function copyToClipboard(text) {
         } catch (err) { console.error('Copy failed', err); }
         document.body.removeChild(textarea);
     }
-}
+        }
