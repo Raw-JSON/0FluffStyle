@@ -1,29 +1,60 @@
 /* Load Inter font for the UI */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;700&display=swap');
 
 /* Base font */
 body {
     font-family: "Inter", sans-serif;
-    /* FIX: Ensure custom var is used for background */
+    /* FIX: Ensure custom var is used for background and base text color */
     background-color: var(--bg); 
+    color: var(--text);
 }
 
-/* Default Theme: Dark (Currently the default set via Tailwind, but defined here for potential override) */
+/* Default Theme: Dark (Using the current default dark classes for fallback) */
 :root {
     --bg: #121212;
     --card: #1e1e24;
     --text: #ececec;
-    --accent: #ff6b6b; /* Red accent from the current design */
+    --accent: #ff6b6b; 
     --border: #333;
 }
 
 /* NEW THEME: Minimalist Forest */
 .forest {
-    --bg: #0f1717; /* Dark Teal Background */
-    --card: #1c2826; /* Deep Green-Gray */
+    --bg: #141d1d; /* ADJUSTED: Lighter, more saturated green-black */
+    --card: #243331; /* ADJUSTED: Visibly greener medium green-gray */
     --text: #e0f2f1; /* Pale Cyan Text */
     --accent: #06d6a0; /* Mint Green/Teal Accent */
     --border: #334155; /* Slate Gray */
+}
+
+/* FIX: Override Tailwind classes when .forest is active */
+.forest .bg-gray-900, 
+.forest .bg-gray-800, 
+.forest .bg-gray-700 {
+    background-color: var(--card) !important;
+}
+
+.forest .text-gray-100,
+.forest .text-white {
+    color: var(--text) !important;
+}
+
+.forest .text-gray-400,
+.forest .text-gray-300 {
+    color: var(--text) !important; 
+}
+
+.forest .border-gray-700 {
+    border-color: var(--border) !important;
+}
+
+/* Override accent colors for buttons/focus effects */
+.forest .bg-blue-600 {
+    background-color: var(--accent) !important;
+}
+.forest .focus\:ring-blue-500 {
+    /* Tailwind uses a CSS variable for ring color, so we override that */
+    --tw-ring-color: var(--accent) !important;
 }
 
 
