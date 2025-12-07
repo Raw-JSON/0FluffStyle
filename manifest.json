@@ -1,6 +1,6 @@
 {
   "name": "0FluffStyle",
-  "short_name": "Styles",
+  "short_name": "0Style",
   "description": "Convert plain text to stylish Unicode fonts instantly.",
   "start_url": "./index.html",
   "display": "standalone",
