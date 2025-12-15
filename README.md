@@ -40,7 +40,7 @@ This application operates entirely in your browser using **Vanilla JavaScript**.
 ---
 
 ## 📄 License
-MIT License(LICENSE). Free to use, remix, and adapt.
+**[MIT License](LICENSE).** Free to use, remix, and adapt.
 
 ---
 
