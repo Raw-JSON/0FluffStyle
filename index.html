@@ -15,13 +15,27 @@
             <p class="text-lg md:text-xl text-gray-400">Type something to convert it into styled Unicode text!</p>
         </header>
 
-        <div class="mb-8 sticky top-4 z-10">
-            <input 
-                type="text" 
-                id="textInput" 
-                placeholder="Type your text here..." 
-                class="w-full p-4 bg-gray-800 border-2 border-gray-700 rounded-lg text-white text-xl md:text-2xl focus:outline-none focus:ring-4 focus:ring-blue-500 focus:border-blue-500 transition-all duration-300 shadow-lg"
-            >
+        <div class="mb-8 sticky top-4 z-20"> <div class="relative">
+                <input 
+                    type="text" 
+                    id="textInput" 
+                    placeholder="Type your text here..." 
+                    class="w-full p-4 pr-12 bg-gray-800 border-2 border-gray-700 rounded-lg text-white text-xl md:text-2xl focus:outline-none focus:ring-4 focus:ring-blue-500 focus:border-blue-500 transition-all duration-300 shadow-lg"
+                >
+                <button 
+                    id="clearBtn" 
+                    class="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-white hidden transition-colors duration-200 focus:outline-none"
+                    title="Clear text"
+                >
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+            
+            <div class="flex justify-end mt-2">
+                <span id="charCounter" class="text-sm text-gray-400 font-mono bg-gray-800 px-2 py-1 rounded border border-gray-700">0 / 280</span>
+            </div>
         </div>
         
         <button id="githubButton" class="w-full p-3 mb-8 bg-gray-700 text-gray-300 rounded-lg font-semibold flex items-center justify-center gap-2 hover:bg-gray-600 transition-colors duration-200">
@@ -37,5 +51,5 @@
 
     <script src="char_maps.js"></script>
     <script src="script.js"></script>
-    </body>
+</body>
 </html>
