@@ -18,9 +18,38 @@ function convertText(text, map) {
     return inputText.split('').map(char => map[char] || char).join('');
 }
 
+// --- NEW COMBINING LOGIC (For Glitch, Strikethrough, etc.) ---
+function combineText(text, combiningChar) {
+    return text.split('').map(c => c + combiningChar).join('');
+}
+
+function zalgoText(text) {
+    // A simplified Zalgo generator (glitch effect)
+    // Adds random combining diacritics above, middle, and below.
+    const chars = text.split('');
+    const zalgoUp = ['\u030d', '\u030e', '\u0304', '\u0305', '\u033f', '\u0311', '\u0306', '\u0310', '\u0352', '\u0357', '\u0351', '\u0307', '\u0308', '\u030a', '\u0342', '\u0343', '\u0344', '\u034a', '\u034b', '\u034c', '\u0303', '\u0302', '\u030c', '\u0350', '\u0300', '\u0301', '\u030b', '\u030f', '\u0312', '\u0313', '\u0314', '\u033d', '\u0309', '\u0363', '\u0364', '\u0365', '\u0366', '\u0367', '\u0368', '\u0369', '\u036a', '\u036b', '\u036c', '\u036d', '\u036e', '\u036f', '\u033e', '\u035b', '\u0346', '\u031a'];
+    const zalgoDown = ['\u0316', '\u0317', '\u0318', '\u0319', '\u031c', '\u031d', '\u031e', '\u031f', '\u0320', '\u0324', '\u0325', '\u0326', '\u0329', '\u032a', '\u032b', '\u032c', '\u032d', '\u032e', '\u032f', '\u0330', '\u0331', '\u0332', '\u0333', '\u0339', '\u033a', '\u033b', '\u033c', '\u0345', '\u0347', '\u0348', '\u0349', '\u034d', '\u034e', '\u0353', '\u0354', '\u0355', '\u0356', '\u0359', '\u035a', '\u0323'];
+    
+    return chars.map(char => {
+        if (char === ' ') return char;
+        let newChar = char;
+        // Add 1-2 random marks up
+        for(let i=0; i < Math.floor(Math.random() * 2) + 1; i++) {
+            newChar += zalgoUp[Math.floor(Math.random() * zalgoUp.length)];
+        }
+        // Add 1 random mark down
+        if (Math.random() > 0.3) {
+             newChar += zalgoDown[Math.floor(Math.random() * zalgoDown.length)];
+        }
+        return newChar;
+    }).join('');
+}
+
+
 const styleMapsForMixed = [
     charMaps.bold, charMaps.serifItalic, charMaps.script, charMaps.fraktur,
-    charMaps.doubleStruck, charMaps.monospace, charMaps.serifBold, charMaps.circled
+    charMaps.doubleStruck, charMaps.monospace, charMaps.serifBold, charMaps.circled,
+    charMaps.smallCaps, charMaps.runic
 ];
 
 function convertMixed(text) {
@@ -30,22 +59,45 @@ function convertMixed(text) {
     }).join('');
 }
 
+// --- FONT REGISTRY ---
+// Updated to include new v1.4 styles
 const fonts = [
     { name: 'Mixed', converter: convertMixed },
     { name: 'Normal', converter: (text) => text },
+    
+    // Standard
     { name: 'Bold', converter: (text) => convertText(text, charMaps.bold) },
-    { name: 'Bold (Serif)', converter: (text) => convertText(text, charMaps.serifBold) },
     { name: 'Italic', converter: (text) => convertText(text, charMaps.serifItalic) },
     { name: 'Bold Italic', converter: (text) => convertText(text, charMaps.serifBoldItalic) },
+    { name: 'Serif Bold', converter: (text) => convertText(text, charMaps.serifBold) },
     { name: 'Script', converter: (text) => convertText(text, charMaps.script) },
     { name: 'Fraktur', converter: (text) => convertText(text, charMaps.fraktur) },
-    { name: 'Bubble', converter: (text) => convertText(text, charMaps.bubble) },
-    { name: 'Tiny Text (Superscript)', converter: (text) => convertText(text, charMaps.tiny) },
     { name: 'Monospace', converter: (text) => convertText(text, charMaps.monospace) },
     { name: 'Double-Struck', converter: (text) => convertText(text, charMaps.doubleStruck) },
+    
+    // Decorative
+    { name: 'Bubble', converter: (text) => convertText(text, charMaps.bubble) },
     { name: 'Circled', converter: (text) => convertText(text, charMaps.circled) },
     { name: 'Squared', converter: (text) => convertText(text, charMaps.squared) },
-    { name: 'Fullwidth', converter: (text) => convertText(text, charMaps.fullwidth) }
+    { name: 'Small Caps', converter: (text) => convertText(text, charMaps.smallCaps) },
+    { name: 'Tiny (Superscript)', converter: (text) => convertText(text, charMaps.tiny) },
+    { name: 'Subscript', converter: (text) => convertText(text, charMaps.subscript) },
+    { name: 'Fullwidth', converter: (text) => convertText(text, charMaps.fullwidth) },
+    
+    // Ancient / Cryptic
+    { name: 'Runic', converter: (text) => convertText(text, charMaps.runic) },
+    { name: 'Ogham', converter: (text) => convertText(text, charMaps.ogham) },
+    { name: 'Gothic (Ancient)', converter: (text) => convertText(text, charMaps.gothicAncient) },
+    { name: 'Coptic', converter: (text) => convertText(text, charMaps.coptic) },
+    { name: 'Shavian', converter: (text) => convertText(text, charMaps.shavian) },
+    { name: 'Braille', converter: (text) => convertText(text, charMaps.braille) },
+    { name: 'Star/Symbol', converter: (text) => convertText(text, charMaps.dingbatCryptic) },
+
+    // Glitch / Effects
+    { name: 'Strikethrough', converter: (text) => combineText(text, '\u0336') },
+    { name: 'Underline', converter: (text) => combineText(text, '\u0332') },
+    { name: 'Slash', converter: (text) => combineText(text, '\u0338') },
+    { name: 'Zalgo (Glitch)', converter: zalgoText },
 ];
 
 // --- UI LOGIC ---
